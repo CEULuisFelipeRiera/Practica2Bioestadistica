@@ -184,4 +184,106 @@ plot(as.numeric(names(F_X)), F_X, type = "s", main = "CDF of X", xlab = "Number 
 
 
 #ejercicio2.2
-#
+#Una determinada especie de ratón desarrolla una forma particular de distrofia muscularque tiene una clara base genética. Se sabe que, en este grupo, la probabilidad deaparición de la citada distrofia muscular es de ¼. Si se analizase una muestra de un total de 20 ratones de esta especie, calcule las probabilidades de que: (a) menos de cincotuviesen distrofia muscular, (b) justo cinco tuviesen distrofia muscular, (c) más de dospero menos de 8 tuvieran distrofia muscular.
+#1. Determine los parámetros del modelo de variable aleatoria a utilizar.
+# Define the number of trials and the probability of success
+n <- 20
+p <- 1/4
+
+
+
+#2. Calcule las probabilidades pedidas (a), (b) y (c) utilizando las funciones pbinom ()y dbinom ().
+# Calculate the probability of less than five mice having muscular dystrophy
+prob_less_than_5 <- pbinom(4, n, p)
+
+# Calculate the probability of exactly five mice having muscular dystrophy
+prob_exactly_5 <- dbinom(5, n, p)
+
+# Calculate the probability of more than two but less than eight mice having muscular dystrophy
+prob_more_than_2_less_than_8 <- pbinom(7, n, p) - pbinom(2, n, p)
+
+# Print the probabilities
+prob_less_than_5
+prob_exactly_5
+prob_more_than_2_less_than_8
+
+
+
+
+#ejercicio2.3
+#Suponga que la probabilidad de que un paciente que ha contraído ébola se recupere esde 0.1. Si 16 personas (sin relación de parentesco entre ellas) han contraído el virus,calcule: (a) el número esperado de pacientes que se recuperarán, (b) la probabilidad deque como mucho 5 se recuperen, (c) la probabilidad de que al menos 5 se recuperen,(d) la probabilidad de que exactamente 5 se recuperen
+#1. Determine los parámetros del modelo de variable aleatoria a utilizar.
+# Define the number of trials and the probability of success
+n <- 16
+p <- 0.1
+
+
+
+#2. Determine el número esperado de pacientes que se recuperarán (a) utilizando lafórmula adecuado según el modelo utilizado.
+# Calculate the probability of exactly two patients recovering
+prob_exactly_2 <- dbinom(2, n, p)
+
+# Calculate the probability of at least three patients recovering
+prob_at_least_3 <- 1 - pbinom(2, n, p)
+
+# Print the probabilities
+prob_exactly_2
+prob_at_least_3
+
+
+
+#3. Calcule las probabilidades pedidas (b), (c) y (d) utilizando las funciones pbinom ()y dbinom ().
+# Calculate the probability of at most five patients recovering
+prob_at_most_5 <- pbinom(5, n, p)
+
+# Calculate the probability of at least five patients recovering
+prob_at_least_5 <- 1 - pbinom(4, n, p)
+
+# Calculate the probability of exactly five patients recovering
+prob_exactly_5 <- dbinom(5, n, p)
+
+# Print the probabilities
+prob_at_most_5
+prob_at_least_5
+prob_exactly_5
+
+
+
+
+
+#ejercicio2.4
+#Imagine que una de las máquinas expendedoras de tickets del aparcamiento de ciertohospital está averiada y no siempre genera el ticket correspondiente. Asumiendon = 181 y p = 0.15 (siendo p la probabilidad de éxito, es decir, la probabilidad de que lamáquina genere el ticket), obtenga la gráfica de la función masa de probabilidad de lavariable binomial X~B(n,p) asociada a este problema.
+#1. Defina n, p, y un vector que contenga todos los posibles valores de X.
+# Define the number of trials and the probability of success
+n <- 181
+p <- 0.15
+
+# Define the possible outcomes
+x <- 0:n
+
+
+
+#2. Utilice dbinom () para generar una variable que represente el valor de la funciónde masa de probabilidad en función de X.
+# Calculate the PMF of X
+prob_X <- dbinom(x, n, p)
+
+# Name the probabilities with their corresponding outcomes
+names(prob_X) <- x
+
+# Print the PMF of X
+prob_X
+
+
+
+#3. Represente en R dicha función de masa de probabilidad utilizando plot ()
+# Plot the PMF of X
+plot(as.numeric(names(prob_X)), prob_X, type = "h", main = "PMF of X", xlab = "Number of tickets", ylab = "Probability")
+
+
+
+
+
+#ejercicio3.1
+#Una máquina que fabrica piezas para prótesis de rodilla tiene una probabilidad de fallodel 3% (p = 0.03) Asumiendo que esta probabilidad de fallo se puede considerarconstante, se pide calcular una serie de probabilidades según las instrucciones que seadjuntan a continuación.
+
+

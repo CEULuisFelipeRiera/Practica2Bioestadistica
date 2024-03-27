@@ -85,3 +85,103 @@ V_Y <- E_Y2 - E_Y^2
 # Print the variances
 V_X
 V_Y
+
+
+
+
+#ejercicio1.2
+#En cierta tribu del sur del Amazonas, las familias suelen tener de 3 a 6 hijos. La funciónmasa de probabilidad estimada de la variable aleatoria asociada X, es la siguiente:P(X = 3) = 0.35, P(X = 4) = 0.45, P(X = 5) = 0.16, P(X = 6) = 0.04. A partir de estainformación, calcule E [X], V [X], y obtenga además la función de distribución deprobabilidad acumulada correspondiente, F(x). Posteriormente, determine cuál es, paraestas familias, la probabilidad de tener no más de 4 hijos y cuál es la probabilidad detener más de 3 pero menos de 6 hijos
+#1. Calcule E [X], V [X]
+# Define the PMF of X
+prob_X <- c(3 = 0.35, 4 = 0.45, 5 = 0.16, 6 = 0.04)
+
+# Calculate the expected value of X
+E_X <- sum(as.numeric(names(prob_X)) * prob_X)
+
+# Calculate the expected value of X^2
+E_X2 <- sum((as.numeric(names(prob_X))^2) * prob_X)
+
+# Calculate the variance of X
+V_X <- E_X2 - E_X^2
+
+# Print the expected value and variance
+E_X
+V_X
+
+
+
+#2. Obtenga la función de distribución de probabilidad acumulada utilizando paraello la función cumsum ()
+# Calculate the cumulative distribution function of X
+F_X <- cumsum(prob_X)
+
+# Print the CDF of X
+F_X
+
+
+
+#3. Determine cuál es, para estas familias, la probabilidad de tener no más de 4 hijos
+# Calculate the probability of having no more than 4 children
+prob_no_more_than_4 <- F_X["4"]
+
+# Print the probability
+prob_no_more_than_4
+
+
+#4. Determine cuál es la probabilidad de tener más de 3 pero menos de 6 hijos
+# Calculate the probability of having more than 3 but less than 6 children
+prob_more_than_3_less_than_6 <- F_X["5"] - F_X["3"]
+
+# Print the probability
+prob_more_than_3_less_than_6
+
+
+
+
+#ejercicio2.1
+#Asumiendo que la determinación del género un bebé durante su gestación sigue unadistribución binomial, obtenga la función de masa de probabilidad y la función dedensidad de probabilidad cuando la variable de interés es el número de hijas en unafamilia que tenga en total 5 hij@s, y represéntelas gráficamente.
+#1. Calcule en primer lugar la función de masa de probabilidad utilizando la funcióndbinom () cuya sintaxis es la siguiente: dbinom (x, n, p = probability) dondex = número de éxitos, n = número de experimentos y p = probabilidad de éxito
+# Define the number of trials and the probability of success
+n <- 5
+p <- 0.5
+
+# Define the possible outcomes
+x <- 0:n
+
+# Calculate the PMF of X
+prob_X <- dbinom(x, n, p)
+
+# Name the probabilities with their corresponding outcomes
+names(prob_X) <- x
+
+# Print the PMF of X
+prob_X
+
+
+
+#2. Calcule posteriormente la función de distribución de probabilidad acumuladautilizando la función pbinom ().
+# Define the possible outcomes
+x <- 0:n
+
+# Calculate the CDF of X
+F_X <- pbinom(x, n, p)
+
+# Name the probabilities with their corresponding outcomes
+names(F_X) <- x
+
+# Print the CDF of X
+F_X
+
+
+
+#3. Represente ambas funciones gráficamente utilizando la función plot ().
+# Plot the PMF of X
+plot(as.numeric(names(prob_X)), prob_X, type = "h", main = "PMF of X", xlab = "Number of daughters", ylab = "Probability")
+
+# Plot the CDF of X
+plot(as.numeric(names(F_X)), F_X, type = "s", main = "CDF of X", xlab = "Number of daughters", ylab = "Cumulative probability")
+
+
+
+
+#ejercicio2.2
+#
